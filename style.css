@@ -1,0 +1,36 @@
+html {
+      overflow: hidden;
+}
+main {
+      height: 100vh;
+}
+
+h1 {
+      text-align: center;
+}
+
+.count {
+      margin-top: 250px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+}
+
+.timer {
+      font-size: 100px;
+      font-weight: bold;
+      margin-right: 50px;
+}
+
+.controller-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+}
+
+.btn {
+      padding: 6px 12px;
+      font-size: 20px;
+      margin: 2px 0;
+}
