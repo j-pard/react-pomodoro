@@ -2,14 +2,14 @@ html {
       overflow: hidden;
 }
 main {
-      height: 100vh;
+      height: 100%;
 }
 
 h1 {
       text-align: center;
 }
 
-.count {
+.timer {
       margin-top: 250px;
       display: flex;
       flex-direction: row;
@@ -17,8 +17,9 @@ h1 {
       align-items: center;
 }
 
-.timer {
-      font-size: 100px;
+.time {
+      width: 500px;
+      font-size: 150px;
       font-weight: bold;
       margin-right: 50px;
 }
