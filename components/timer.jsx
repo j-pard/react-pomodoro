@@ -4,13 +4,14 @@ const Timer = () => {
 
       const defaultTime = 10;
       const [time, setTime] = useState(defaultTime); // seconds 
-      const [isStopped, setIsStopped] = useState(true); // Init stopped
-      const [isRunning, setIsRunning] = useState(false); // Interval
+      const [button, setButton] = useState("START");
+
 
       let timer = time;
       let minutes;
       let seconds;
-      let interval = null;
+      let interval = 1;
+      let isStopped = true;
 
       const addTime = () => {
             if(isStopped) {
@@ -30,21 +31,6 @@ const Timer = () => {
             }
       };
 
-      const startTimer = () => {
-            interval = setInterval(() => {
-                  if(timer == 0) {
-                        clearInterval(interval);
-                        setIsStopped(true);
-                  }
-                  else {
-                        setIsStopped(false);
-                        timer--;
-                  }
-                  setTime(timer);
-                        
-                  }, 1000);               
-      };
-
       const showTime = (timer) => {
             minutes = Math.floor(timer/60);
             minutes = minutes < 10 ? `0${minutes}` : minutes;
@@ -52,6 +38,28 @@ const Timer = () => {
             seconds = seconds < 10 ? `0${seconds}` : seconds;
             return `${minutes} : ${seconds}`;
       }
+
+      const toggleTimer = () => {
+            if(button == "STOP") {
+                  clearInterval(interval);
+                  setButton("START");
+            }
+            else {
+                  setButton("STOP");
+                  interval = setInterval(() => {
+                        if(timer == 0) {
+                              clearInterval(interval);
+                              isStopped = true;
+                              setButton("START");
+                        }
+                        else {
+                              isStopped = false;
+                              timer--;
+                        }
+                        setTime(timer);
+                  }, 1000);   
+            }        
+      };      
 
       return (
             <div className="timer">
@@ -62,7 +70,7 @@ const Timer = () => {
                   <div className="controller-btn">
                         <button className="btn" onClick={addTime}>+</button>
                         <button className="btn" onClick={resetTime}>Reset</button>
-                        <button className="btn" onClick={startTimer}>Start</button>
+                        <button id="toggle" className="btn" onClick={toggleTimer}>{button}</button>
                         <button className="btn" onClick={reduceTime}>-</button>
                   </div>
             </div>
