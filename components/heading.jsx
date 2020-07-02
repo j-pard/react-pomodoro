@@ -3,13 +3,7 @@ import React from "react";
 
 const Headings = () => {
 
-      return (
-
-            <div>
-                  <h1>React Pomodoro</h1>
-            </div>
-
-      );
+      return <h1>React Pomodoro</h1>;
 };
 
 export default Headings;
